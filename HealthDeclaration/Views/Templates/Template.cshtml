@@ -1,0 +1,157 @@
+﻿@{
+    ViewData["Title"] = "Template";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<form id="TemplateForm" autocomplete="off">
+    <div class="card">
+        <div class="card-header">
+            <h5 class="mb-0">@ViewData["Title"] </h5>
+        </div>
+        <div class="container-fluid" style="width: 100%;">
+            <div class="card-body">
+                <div class="row">
+                    <div class="form-group row">
+
+                        <div class="col-sm-12 row my-1 p-0">
+                            <div class="col-sm-4 row mx-0">
+                                <label class="col-form-label col-sm-4">Template<span style="color:red;">*</span></label>
+                                <div class="col-sm-6 px-0">
+                                    <input id="template_name" class="form-control" maxlength="50" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 row my-1 p-0">
+                            <div class="col-sm-4 row mx-0">
+                                <label class="col-form-label col-sm-4">Description</label>
+                                <div class="col-sm-8 px-0">
+                                    <textarea class="form-control" id="description" rows="3" maxlength="150" autocomplete="off"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 row my-1 p-2">
+                            <p><h6><strong><u>Detail</u></strong></h6></p>
+                        </div>
+                        <div class="col-sm-12 row my-1 p-0">
+                            <div class="col-sm-8 row mx-0">
+                                <label class="col-form-label col-sm-2">Field Label<span style="color:red;">*</span></label>
+                                <div class="col-sm-10 px-0">
+                                    <textarea class="form-control" id="field_label" rows="2" maxlength="150" autocomplete="off"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 row my-1 p-0">
+                            <div class="col-sm-4 row mx-0">
+                                <label class="col-form-label col-sm-4">Field Type<span style="color:red;">*</span></label>
+                                <div class="col-sm-6 px-0">
+                                    @Html.DropDownList("field_type", ViewBag.Enum_FieldType as SelectList,
+                                    new { @class = "form-control custom-select", @id = "field_type", @name = "field_type"})
+                                </div>
+                            </div>
+                            <div class="col-sm-4 row mx-0">
+                                <label class="col-form-label col-sm-5">Sort Sequence<span style="color:red;">*</span></label>
+                                <div class="col-sm-6 px-0">
+                                    <input asp-for="sr_no" class="form-control" maxlength="50" />
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-sm-12 row my-1 p-0">
+                            <div class="col-sm-4 row mx-0">
+                                <label class="col-form-label col-sm-4">Field Options</label>
+                                <div class="col-sm-6 px-0">
+                                    <input asp-for="field_options" class="form-control" maxlength="50" />
+                                    <span class="col-form-label" style="font-size: 10px;color: red;">(values are separated with comma eg. Yes,No)</span>
+                                </div>
+                            </div>
+                            <div class="col-sm-4 row mx-0">
+                                <label class="col-form-label col-sm-5">Field Placeholder</label>
+                                <div class="col-sm-6 px-0">
+                                    <input asp-for="field_placeholder" class="form-control" maxlength="50" />
+                                </div>
+                            </div>
+                            <div class="col-sm-4 row mx-0">
+                                <div class="col-sm-5">
+                                    <input type="checkbox" id="chk_is_required" class="custom-checkbox" />
+                                    <label class="col-form-label" for="chk_is_required">Is Required</label>
+                                </div>
+                                <div class="col-sm-6 px-0">
+                                    <input class="btn btn-primary" type="button" id="btnAdd" value="Add" />
+                                    <input class="btn btn-danger" type="button" id="btnCancel" value="Cancel" />
+                                </div>                           
+                            </div>
+                        </div>
+
+                         <div class="col-sm-12 row my-1 p-0">
+                            <div class="table-responsive">
+                                <table id="myTableUser" class="table table-bordered table-sm w-100" aria-describedby="students_table_desc">
+                                    <thead style="background-color:#66b3ff">
+                                        <tr>
+                                            <th style="width:35%">Field Label</th>
+                                            <th style="width:20%">Field Type</th>
+                                            <th style="width:15%">Field Options</th>
+                                            <th style="width:20%">Sort Sequence</th>
+                                            <th style="width:10%"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Name</td>
+                                            <td>Input Text</td>
+                                            <td></td>
+                                            <td>1</td>
+                                            <td>
+                                                <button type="button" class="btn btn-outline-primary btn-sm" style="color:black;" id="btnCopy">&nbsp;Edit</button>
+                                                <button type="button" class="btn btn-outline-primary btn-sm" style="color:black;" id="btnCopy">&nbsp;Delete</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Business Email</td>
+                                            <td>Input Text</td>
+                                            <td></td>
+                                            <td>2</td>
+                                            <td>
+                                                <button type="button" class="btn btn-outline-primary btn-sm" style="color:black;" id="btnCopy">&nbsp;Edit</button>
+                                                <button type="button" class="btn btn-outline-primary btn-sm" style="color:black;" id="btnCopy">&nbsp;Delete</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>1.Are you currently under a Quarantine Order, Stay-Home Notice?</td>
+                                            <td>Radio</td>
+                                            <td>Yes,No</td>
+                                            <td>3</td>
+                                            <td>
+                                                <button type="button" class="btn btn-outline-primary btn-sm" style="color:black;" id="btnCopy">&nbsp;Edit</button>
+                                                <button type="button" class="btn btn-outline-primary btn-sm" style="color:black;" id="btnCopy">&nbsp;Delete</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>2.Select symptoms you have experienced</td>
+                                            <td>Checkbox</td>
+                                            <td>Fever,Cough, Shortness of Breath, Fatigue</td>
+                                            <td>4</td>
+                                            <td>
+                                                <button type="button" class="btn btn-outline-primary btn-sm" style="color:black;" id="btnCopy">&nbsp;Edit</button>
+                                                <button type="button" class="btn btn-outline-primary btn-sm" style="color:black;" id="btnCopy">&nbsp;Delete</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <input type="submit" id="btnSave" class="btn btn-primary" value="Create" />
+            <a asp-controller="Role" asp-action="RoleList" class="btn btn-danger">Cancel</a>
+        </div>
+    </div>
+</form>
+@section Scripts {
+    <script src="/js/template.js"></script>
+}
+

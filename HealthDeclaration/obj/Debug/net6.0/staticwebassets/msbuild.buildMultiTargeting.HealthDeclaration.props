@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\HealthDeclaration.props" />
+</Project>

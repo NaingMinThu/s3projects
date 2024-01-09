@@ -1,0 +1,29 @@
+﻿@page
+@model PrivacyModel
+@{
+    ViewData["Title"] = "Privacy Policy";
+}
+<h1>@ViewData["Title"]</h1>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Health Declaration Form</title>
+    <link rel="stylesheet" href="/css/template.css">
+</head>
+<body>
+    <h1>Health Declaration Form</h1>
+
+    <div class="template-selector">
+        <label for="templateSelect">Select Template:</label>
+        <select id="templateSelect">
+            <option value="template1">COVID-19 Checklist</option>
+            <option value="template2">Visitor Information</option>
+            <!-- Add more template options -->
+        </select>
+    </div>
+
+    <div id="formFields"></div>
+    <button id="addFieldBtn">Add Field</button>
+</body>
+</html>

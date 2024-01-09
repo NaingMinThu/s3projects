@@ -1,0 +1,260 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PayLoadAPI</name>
+    </assembly>
+    <members>
+        <member name="M:PayLoadAPI.Controllers.CommonController.#ctor(PayLoadAPI.Logging.ILoggerService)">
+            <summary>
+            Initializes a new instance of the <see cref="T:PayLoadAPI.Controllers.CommonController"/> class.
+            </summary>
+            <param name="loggerService">The logger service.</param>
+        </member>
+        <member name="M:PayLoadAPI.Controllers.CommonController.CheckModelIsNull(System.Object,System.String)">
+            <summary>
+            Checks the model is null.
+            </summary>
+            <param name="model">The model.</param>
+            <param name="apiName">The api name.</param>
+            <returns>A bool.</returns>
+        </member>
+        <member name="M:PayLoadAPI.Controllers.CommonController.CheckIdIsNull(System.String,System.String)">
+            <summary>
+            Checks the id is null.
+            </summary>
+            <param name="id">The id.</param>
+            <param name="apiName">The api name.</param>
+            <returns>A bool.</returns>
+        </member>
+        <member name="M:PayLoadAPI.Controllers.JwTManager.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Initializes a new instance of the <see cref="T:PayLoadAPI.Controllers.JwTManager"/> class.
+            </summary>
+            <param name="iconfiguration">The iconfiguration.</param>
+        </member>
+        <member name="M:PayLoadAPI.Controllers.JwTManager.GetJWTToken">
+            <summary>
+            Gets the j w t toen.
+            </summary>
+            <param name="user_id">The user_id.</param>
+            <param name="username">The username.</param>
+            <returns>A Tokens.</returns>
+        </member>
+        <member name="M:PayLoadAPI.Controllers.LogInApi.#ctor(PayLoadAPI.Interfaces.IJwtManager,PayLoadAPI.Logging.ILoggerService)">
+            <summary>
+            Initializes a new instance of the <see cref="T:PayLoadAPI.Controllers.LogInApi"/> class.
+            </summary>
+            <param name="dbCon">The db con.</param>
+            <param name="jwtManager">The jwt manager.</param>
+            <param name="loggerService">The logger service.</param>
+        </member>
+        <member name="M:PayLoadAPI.Controllers.LogInApi.Authenticate">
+            <summary>
+            Login In to access other api.
+            </summary>
+            <returns></returns>
+            <response code="400">Error in API Call</response>
+            <response code="200">Success in API Call</response>
+        </member>
+        <member name="M:PayLoadAPI.Controllers.PayLoadApi.#ctor(PayLoadAPI.DBModels.S3payLoadsContext,PayLoadAPI.Logging.ILoggerService)">
+            <summary>
+            Initializes a new instance of the <see cref="T:PayLoadAPI.Controllers.PayLoadApi"/> class.
+            </summary>
+            <param name="dbCon">The db con.</param>
+            <param name="loggerService">The logger service.</param>
+        </member>
+        <member name="M:PayLoadAPI.Controllers.PayLoadApi.Create(PayLoadAPI.VModels.PayLoadRequestModel)">
+            <summary>
+            Create PayLoad Info
+            </summary>
+            <param name="model">payload info data model</param>
+            <returns></returns>
+            <response code="400">Error in API Call</response>
+            <response code="200">Success in API Call</response>
+        </member>
+        <member name="M:PayLoadAPI.Controllers.PayLoadApi.Update(PayLoadAPI.VModels.PayLoadRequestModel)">
+            <summary>
+            Update the payload information by ID
+            </summary>             
+            <param name="model">payload data model</param>
+            <returns></returns>
+            <response code="400">Error in API Call</response>
+            <response code="200">Success in API Call</response>
+        </member>
+        <member name="M:PayLoadAPI.Controllers.PayLoadApi.Delete(System.String)">
+            <summary>
+            Delete the payload information by ID
+            </summary>             
+            <param name="device_id">device id to delete</param>
+            <returns></returns>
+            <response code="400">Error in API Call</response>
+            <response code="200">Success in API Call</response>
+        </member>
+        <member name="M:PayLoadAPI.Controllers.PayLoadApi.ReadV1(System.String)">
+            <summary>
+            Retrieve the payload information by ID 
+            </summary>
+            <param name="device_id">device id to search for</param>
+            <response code="400">Error in API Call</response>
+            <response code="200">Success in API Call</response>
+        </member>
+        <member name="M:PayLoadAPI.Controllers.PayLoadApi.ReadV2(System.String)">
+            <summary>
+            Retrieve the payload information by ID 
+            </summary>
+            <param name="device_id">device id to search for</param>
+            <response code="400">Error in API Call</response>
+            <response code="200">Success in API Call</response>
+        </member>
+        <member name="M:PayLoadAPI.Interfaces.IJwtManager.GetJWTToken">
+            <summary>
+            Gets the j w t toen.
+            </summary>
+            <returns>A Tokens.</returns>
+        </member>
+        <member name="M:PayLoadAPI.Interfaces.ILogInApi.Authenticate">
+            <summary>
+            Authenticates the.
+            </summary>
+            <returns>A Message.</returns>
+        </member>
+        <member name="M:PayLoadAPI.Interfaces.IPayLoadApi.Create(PayLoadAPI.VModels.PayLoadRequestModel)">
+            <summary>
+            Create PayLoad Info
+            </summary>
+            <param name="model">payload info data model</param>
+            <returns>A Message.</returns>
+        </member>
+        <member name="M:PayLoadAPI.Interfaces.IPayLoadApi.Update(PayLoadAPI.VModels.PayLoadRequestModel)">
+            <summary>
+            Update PayLoad Info
+            </summary>
+            <param name="model">payload info data model</param>
+            <returns>A Message.</returns>
+        </member>
+        <member name="M:PayLoadAPI.Interfaces.IPayLoadApi.Delete(System.String)">
+            <summary>
+            Delete PayLoad Info
+            </summary>
+            <param name="model">payload info data model</param>
+            <returns>A Message.</returns>
+        </member>
+        <member name="M:PayLoadAPI.Interfaces.IPayLoadApi.ReadV1(System.String)">
+            <summary>
+            Retrieve the payload information by ID 
+            </summary>
+            <param name="device_id">device id to search for</param>
+            <returns>A Message.</returns>
+        </member>
+        <member name="M:PayLoadAPI.Interfaces.IPayLoadApi.ReadV2(System.String)">
+            <summary>
+            Retrieve the payload information by ID 
+            </summary>
+            <param name="device_id">device id to search for</param>
+            <returns>A Message.</returns>
+        </member>
+        <member name="T:PayLoadAPI.Logging.ILoggerService">
+            <summary>
+            The logger service.
+            </summary>
+        </member>
+        <member name="M:PayLoadAPI.Logging.ILoggerService.Information(System.String)">
+            <summary>
+            Information the.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:PayLoadAPI.Logging.ILoggerService.Warning(System.String)">
+            <summary>
+            Warnings the.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:PayLoadAPI.Logging.ILoggerService.Debug(System.String)">
+            <summary>
+            Debugs the.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:PayLoadAPI.Logging.ILoggerService.Error(System.String)">
+            <summary>
+            Errors the.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:PayLoadAPI.Logging.LoggerService.Information(System.String)">
+            <summary>
+            Information the.
+            </summary>
+            <param name="message">The message.</param>MO
+        </member>
+        <member name="M:PayLoadAPI.Logging.LoggerService.Warning(System.String)">
+            <summary>
+            Warnings the.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:PayLoadAPI.Logging.LoggerService.Debug(System.String)">
+            <summary>
+            Debugs the.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:PayLoadAPI.Logging.LoggerService.Error(System.String)">
+            <summary>
+            Errors the.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="P:PayLoadAPI.VModels.Message.success">
+            <summary>
+            Gets or sets a value indicating whether success.
+            </summary>
+        </member>
+        <member name="P:PayLoadAPI.VModels.Message.message">
+            <summary>
+            Gets or sets the message.
+            </summary>
+        </member>
+        <member name="P:PayLoadAPI.VModels.PayLoadResponseResultV1Model.success">
+            <summary>
+            Gets or sets a value indicating whether success.
+            </summary>
+        </member>
+        <member name="P:PayLoadAPI.VModels.PayLoadResponseResultV1Model.message">
+            <summary>
+            Gets or sets the message.
+            </summary>
+        </member>
+        <member name="P:PayLoadAPI.VModels.PayLoadResponseResultV1Model.data">
+            <summary>
+            Gets or sets the data goods.
+            </summary>
+        </member>
+        <member name="P:PayLoadAPI.VModels.PayLoadResponseResultV2Model.success">
+            <summary>
+            Gets or sets a value indicating whether success.
+            </summary>
+        </member>
+        <member name="P:PayLoadAPI.VModels.PayLoadResponseResultV2Model.message">
+            <summary>
+            Gets or sets the message.
+            </summary>
+        </member>
+        <member name="P:PayLoadAPI.VModels.PayLoadResponseResultV2Model.data">
+            <summary>
+            Gets or sets the data.
+            </summary>
+        </member>
+        <member name="P:PayLoadAPI.VModels.ResponseCommonMsg.error">
+            <summary>
+            Gets the error.
+            </summary>
+        </member>
+        <member name="P:PayLoadAPI.VModels.Tokens.Token">
+            <summary>
+            Gets or sets the token.
+            </summary>
+        </member>
+    </members>
+</doc>
