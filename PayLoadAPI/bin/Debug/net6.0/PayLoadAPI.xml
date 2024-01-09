@@ -34,17 +34,14 @@
         </member>
         <member name="M:PayLoadAPI.Controllers.JwTManager.GetJWTToken">
             <summary>
-            Gets the j w t toen.
+            Gets the JWT toen.
             </summary>
-            <param name="user_id">The user_id.</param>
-            <param name="username">The username.</param>
             <returns>A Tokens.</returns>
         </member>
         <member name="M:PayLoadAPI.Controllers.LogInApi.#ctor(PayLoadAPI.Interfaces.IJwtManager,PayLoadAPI.Logging.ILoggerService)">
             <summary>
             Initializes a new instance of the <see cref="T:PayLoadAPI.Controllers.LogInApi"/> class.
             </summary>
-            <param name="dbCon">The db con.</param>
             <param name="jwtManager">The jwt manager.</param>
             <param name="loggerService">The logger service.</param>
         </member>
@@ -136,7 +133,7 @@
             <summary>
             Delete PayLoad Info
             </summary>
-            <param name="model">payload info data model</param>
+            <param name="device_id">device_id to delete</param>
             <returns>A Message.</returns>
         </member>
         <member name="M:PayLoadAPI.Interfaces.IPayLoadApi.ReadV1(System.String)">

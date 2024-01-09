@@ -20,10 +20,8 @@ namespace PayLoadAPI.Controllers
             this._configuration = iconfiguration;
         }
         /// <summary>
-        /// Gets the j w t toen.
+        /// Gets the JWT toen.
         /// </summary>
-        /// <param name="user_id">The user_id.</param>
-        /// <param name="username">The username.</param>
         /// <returns>A Tokens.</returns>
         public Tokens GetJWTToken()
         {
@@ -45,9 +43,6 @@ namespace PayLoadAPI.Controllers
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(tokenKey), SecurityAlgorithms.HmacSha256Signature)
             };
             var token = tokenHandler.CreateToken(tokenDescriptor);
-            //time out for refreshtoken
-            var refreshtoken = tokenHandler.CreateToken(tokenDescriptor);
-
             return new Tokens
             {
                 Token = tokenHandler.WriteToken(token)

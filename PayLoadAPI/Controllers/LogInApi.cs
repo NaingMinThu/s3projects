@@ -14,7 +14,6 @@ namespace PayLoadAPI.Controllers
         /// <summary>
         /// Initializes a new instance of the <see cref="LogInApi"/> class.
         /// </summary>
-        /// <param name="dbCon">The db con.</param>
         /// <param name="jwtManager">The jwt manager.</param>
         /// <param name="loggerService">The logger service.</param>
         public LogInApi(IJwtManager jwtManager, ILoggerService loggerService)

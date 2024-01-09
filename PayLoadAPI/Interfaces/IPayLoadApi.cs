@@ -19,7 +19,7 @@ namespace PayLoadAPI.Interfaces
         /// <summary>
         /// Delete PayLoad Info
         /// </summary>
-        /// <param name="model">payload info data model</param>
+        /// <param name="device_id">device_id to delete</param>
         /// <returns>A Message.</returns>
         Task<Message> Delete(string device_id);
         /// <summary>

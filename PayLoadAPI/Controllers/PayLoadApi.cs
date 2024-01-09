@@ -9,6 +9,7 @@ using System;
 using System.Text.RegularExpressions;
 using PayLoadAPI.Interfaces;
 using Microsoft.AspNetCore.Authorization;
+using Newtonsoft.Json;
 
 namespace PayLoadAPI.Controllers
 {
@@ -42,16 +43,13 @@ namespace PayLoadAPI.Controllers
         [HttpPost]
         [Route("/api/v1/PayLoad/")]
         [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest, Type = typeof(string))]
-        //[ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
-        //[ProducesResponseType(typeof(string), StatusCodes.Status500InternalServerError)]
         public async Task<Message> Create(PayLoadRequestModel model)
         {
             Message message = new() { success = false, message = msg.error };
             bool success = common.CheckModelIsNull(model, " calling payload info create api");
             if (success)
             {
-                //Logger.Information("BaseControllerAttribute:PostandPutandDeleteAsync:Url:" + url + ", Type:" + type +
-                //", Param:" + JsonConvert.SerializeObject(model));
+                logger.Information("RequestValues:PayLoad:Create:Param:" + JsonConvert.SerializeObject(model));
                 try
                 {
                     DeviceInfo entity = new()
@@ -94,14 +92,13 @@ namespace PayLoadAPI.Controllers
         [HttpPut]
         [Route("/api/v1/PayLoad/")]
         [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest, Type = typeof(string))]
-        //[ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
-        //[ProducesResponseType(typeof(string), StatusCodes.Status500InternalServerError)]
         public async Task<Message> Update(PayLoadRequestModel model)
         {
             Message message = new() { success = false, message = msg.error };
             bool success = common.CheckModelIsNull(model, "calling payload info update api");
             if (success)
             {
+                logger.Information("RequestValues:PayLoad:Update:Param:" + JsonConvert.SerializeObject(model));
                 try
                 {
                     DeviceInfo dataInfo = db.DeviceInfos.Where(x => x.DeviceId == model.device_id).Select(x => x).FirstOrDefault();
@@ -143,14 +140,13 @@ namespace PayLoadAPI.Controllers
         [HttpDelete]
         [Route("/api/v1/PayLoad/")]
         [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest, Type = typeof(string))]
-        //[ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
-        //[ProducesResponseType(typeof(string), StatusCodes.Status500InternalServerError)]
         public async Task<Message> Delete(string device_id)
         {
             Message message = new() { success = false, message = msg.error };
             bool success = common.CheckIdIsNull(device_id, "calling payload info delete api");
             if (success)
             {
+                logger.Information("RequestValues:PayLoad:Delete:Param:" + JsonConvert.SerializeObject(device_id));
                 try
                 {
                     DeviceInfo dataInfo = db.DeviceInfos.Where(x => x.DeviceId == device_id).Select(x => x).FirstOrDefault();
@@ -175,17 +171,15 @@ namespace PayLoadAPI.Controllers
         [HttpGet]
         [Route("/api/v1/PayLoadV1/")]
         [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest, Type = typeof(string))]
-        //[ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
-        //[ProducesResponseType(typeof(string), StatusCodes.Status500InternalServerError)]
         public async Task<PayLoadResponseResultV1Model> ReadV1(string device_id)
         {
             bool success = common.CheckIdIsNull(device_id, "calling payload info v1 retrieve api");
             PayLoadResponseResultV1Model response = new() { success = false, message = msg.error };
             if (success)
             {
+                logger.Information("RequestValues:PayLoadV1:Read:Param:" + JsonConvert.SerializeObject(device_id));
                 try
                 {
-
                     PayLoadResponseV1Model dataInfo = db.DeviceInfos.Where(x => x.DeviceId == device_id).Select(x => new PayLoadResponseV1Model()
                     {
                        device_id = x.DeviceId,
@@ -233,9 +227,9 @@ namespace PayLoadAPI.Controllers
             PayLoadResponseResultV2Model response = new() { success = false, message = msg.error };
             if (success)
             {
+                logger.Information("RequestValues:PayLoadV2:Read:Param:" + JsonConvert.SerializeObject(device_id));
                 try
                 {
-
                     PayLoadResponseV2Model dataInfo = db.DeviceInfos.Where(x => x.DeviceId == device_id).Select(x => new PayLoadResponseV2Model()
                     {
                         device_id = x.DeviceId,
